@@ -1,5 +1,4 @@
 * {
-  background-color: #149edc;
   font-size: 62.5%;
   box-sizing: border-box;
   margin-top: 0;
@@ -10,15 +9,33 @@
   font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
 }
 
-.header {
-  margin-bottom: 20px;
+.case {
+  background-color: #149edc;
+}
+
+.weatherbar {
+  display: flex;
+  margin: auto;
+  height: 70px;
+  max-width: 1000px;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
   text-align: center;
-  font-size: 2rem;
+  font-size: 4rem;
+  font-weight: 600;
   background-color: #149edc;
   color: #ffffff;
-  padding: 10px;
   font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
+  padding-left: 30px;
+  padding-right: 30px;
+  padding-top: 20px;
+  padding-bottom: 20px;
 }
+.weatherbarwrap {
+  background-color: #149edc;
+}
+
 .navbar {
   background-color: #ffffff;
   display: flex;
@@ -29,21 +46,42 @@
   height: 40px;
   justify-self: left;
   align-self: center;
-  margin-left: 10px;
+  margin-left: 20px;
 }
-input {
+#locationInput {
   background-color: #ffffff;
+  width: 90%;
+  border: 0px;
+  font-size: 2rem;
+  padding-left: 20px;
+  color: #545658;
+  outline: none;
 }
 
-button {
-  background-color: rgb(215, 215, 215);
+#currentLocation {
+  background-color: #1b3e50;
+  width: 44px;
+  height: 44px;
+  padding: 8px;
+  margin-left: 8px;
+}
+
+#mag_glass {
+  width: 44px;
+  -webkit-transform: scaleX(-1);
+  transform: scaleX(-1);
+  background-color: #ffffff;
 }
 
 .searchBox {
   font-size: 2rem;
   text-align: center;
   font-family: Arial, Helvetica, sans-serif;
-  margin-bottom: 20px;
+  width: 90%;
+  padding-left: 20px;
+  display: flex;
+  flex-wrap: nowrap;
+  height: 44px;
 }
 
 div {

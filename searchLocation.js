@@ -4,8 +4,13 @@ const locationSearchRef = document.getElementById("locationSearch");
 const weatherRootRef = document.getElementById("weatherRoot");
 const cityListContainer = document.querySelector("[data-suggestion]");
 const searchListRef = document.getElementById("searchList");
+const inputRef = document.getElementById("locationInput");
 
 const spinner = `<div class="lds-roller"><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div></div>`;
+
+inputRef.addEventListener("click", () => {
+  inputRef.setAttribute("value", "");
+});
 
 locationSearchRef.addEventListener("click", function searchBox(e) {
   e.preventDefault();
