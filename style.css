@@ -86,36 +86,47 @@
   height: 44px;
 }
 
-div {
-  font-size: 1.2rem;
-  text-align: center;
-  font-family: Arial, Helvetica, sans-serif;
-}
-
-div ul {
-  font-size: 1rem;
-  text-align: center;
-  font-family: Arial, Helvetica, sans-serif;
+ul {
+  margin: 0px;
 }
 
 div ul li {
-  font-size: 1.2rem;
+  font-size: 2rem;
+  padding-top: 5px;
+  padding-bottom: 5px;
   text-align: center;
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
   list-style-type: none;
+  border-bottom: 1px solid #ededed;
+}
+
+ul li:hover {
+  background-color: #ededed;
 }
 
 #weatherRoot {
   background-color: #ffffff;
-  display: flex;
+  display: none;
   align-items: center;
   justify-content: center;
+  height: 200px;
+  font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
+  font-size: 2rem;
+  text-align: center;
 }
 #weatherRoot img {
   background-color: transparent;
 }
 #weatherRoot div {
   background-color: transparent;
+  width: 100%;
+  font: inherit;
+}
+
+.map {
+  width: 40%;
+  padding-top: 50px;
+  padding-left: 20px;
 }
 
 .lds-roller {

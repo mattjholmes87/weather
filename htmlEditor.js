@@ -5,6 +5,7 @@ export function HTMLEditor(result) {
   const { list } = result.data;
   const { name, country } = result.data.city;
   console.log(list);
+  weatherRootRef.style.display = "flex";
   weatherRootRef.innerHTML += `Your five day forecast for ${name}, ${country} :`;
   for (let i = 0; i < list.length; i += 8) {
     const fiveDayTemp = list[i].main.temp;
