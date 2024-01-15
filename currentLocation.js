@@ -21,7 +21,7 @@ export async function getWeatherDataCurrentLoc() {
     const { latitude, longitude } = data.coords;
 
     const result = await axios.get(
-      `https://api.openweathermap.org/data/2.5/weather?lat=${latitude}&lon=${longitude}&appid=20b2728d9aba59c5f9efb3c40597cd8c`
+      `https://api.openweathermap.org/data/2.5/forecast?lat=${latitude}&lon=${longitude}&appid=20b2728d9aba59c5f9efb3c40597cd8c`
     );
 
     console.log(result);

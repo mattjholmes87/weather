@@ -2,17 +2,22 @@ import { HTMLEditor } from "./htmlEditor.js";
 
 const locationSearchRef = document.getElementById("locationSearch");
 const weatherRootRef = document.getElementById("weatherRoot");
-const locationListRef = document.getElementById("locationList");
+const cityListContainer = document.querySelector("[data-suggestion]");
+const searchListRef = document.getElementById("searchList");
 
 const spinner = `<div class="lds-roller"><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div></div>`;
 
 locationSearchRef.addEventListener("click", function searchBox(e) {
   e.preventDefault();
   let typedLocation = document.getElementById("locationInput").value;
-  getWeatherData(typedLocation);
+  if (typedLocation.length < 2) {
+    weatherRootRef.innerHTML = `Please enter at least 2 characters`;
+  } else {
+    getWeatherData(typedLocation);
+  }
 });
 
-export async function getWeatherData(typedLocation) {
+async function getWeatherData(typedLocation) {
   weatherRootRef.innerHTML = spinner;
 
   try {
@@ -20,50 +25,49 @@ export async function getWeatherData(typedLocation) {
       `http://api.openweathermap.org/geo/1.0/direct?q=${typedLocation}&limit=5&appid=20b2728d9aba59c5f9efb3c40597cd8c`
     );
     console.log(searchLocation);
-    const { data } = searchLocation;
-    cityString(data);
 
-    // cityList(searchLocation); trying to pull from Array but think its object
+    await handleCityList(searchLocation);
 
     const { lat, lon } = searchLocation.data[0];
     console.log(lat, lon);
-    const result = await axios.get(
-      `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=20b2728d9aba59c5f9efb3c40597cd8c`
-    );
-
-    console.log(result);
-
-    await HTMLEditor(result);
   } catch (err) {
     weatherRootRef.innerHTML = `API Down, try again later`;
   }
 }
 
-// function cityList(searchLocation) {
-//   for (let i = 0; i < 6; i++) {
-//     console.log(
-//       searchLocation.data[i].name,
-//       searchLocation.data[i].state,
-//       searchLocation.data[i].country
-//     );
-//   }
-// }
+const handleCityList = (input) => {
+  cityListContainer.style.display = "block";
+  const object = input.data.map((loc) => {
+    const { lat, lon, name, state = "", country = "" } = loc;
 
-function cityString(data) {
-  locationListRef.innerHTML = "";
-  for (let i = 0; i < data.length; i++) {
-    let locSearch = JSON.stringify(
-      data[i].name + ", " + data[i].state + ", " + data[i].country
+    return `<li data-lat="${lat}" data-lon="${lon}">${name}, ${state} (${country})</li>`;
+  });
+  const cityString = object.join("");
+  cityListContainer.innerHTML = cityString;
+  weatherRootRef.innerHTML = "";
+  cityListContainer.addEventListener("click", function (event) {
+    if (event.target.tagName.toLowerCase() === "li") {
+      const lat = event.target.getAttribute("data-lat");
+      const lon = event.target.getAttribute("data-lon");
+
+      latAndLon(lat, lon);
+
+      cityListContainer.style.display = "none";
+    }
+  });
+};
+
+async function latAndLon(lat, lon) {
+  console.log(lat, lon);
+  try {
+    const result = await axios.get(
+      `https://api.openweathermap.org/data/2.5/forecast?lat=${lat}&lon=${lon}&appid=20b2728d9aba59c5f9efb3c40597cd8c`
     );
-    console.log(locSearch);
 
-    locationListRef.innerHTML += `<div><button class="locationDetailed">${locSearch}</button></div>`;
+    console.log(result, "this");
+
+    await HTMLEditor(result);
+  } catch (err) {
+    weatherRootRef.innerHTML = `API Down, try again later`;
   }
-  // const locationListDetailRef =
-  //   document.getElementsByClassName("locationDetailed");
-
-  // locationListDetailRef.addEventListener("click", function finalSearch(e) {
-  //   e.preventDefault();
-  //   console.log("Success");
-  // });
 }
