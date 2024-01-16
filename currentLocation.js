@@ -3,17 +3,21 @@ import { HTMLEditor } from "./htmlEditor.js";
 
 const currentLocationRef = document.getElementById("currentLocation");
 const weatherRootRef = document.getElementById("weatherRoot");
+const spinnerRef = document.getElementById("spinner_box");
+const weatherHeaderRef = document.getElementById("weatherHeader");
 
 const spinner = `<div class="lds-roller"><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div></div>`;
 
 currentLocationRef.addEventListener("click", function locationBox(e) {
   e.preventDefault();
+  weatherRootRef.innerHTML = "";
+  weatherHeaderRef.innerHTML = "";
   getWeatherDataCurrentLoc();
   clearFields();
 });
 
 export async function getWeatherDataCurrentLoc() {
-  weatherRootRef.innerHTML = spinner;
+  spinnerRef.innerHTML = spinner;
 
   try {
     const data = await getLocation();

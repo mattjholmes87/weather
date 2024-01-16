@@ -5,6 +5,8 @@ const weatherRootRef = document.getElementById("weatherRoot");
 const cityListContainer = document.querySelector("[data-suggestion]");
 const searchListRef = document.getElementById("searchList");
 const inputRef = document.getElementById("locationInput");
+const spinnerRef = document.getElementById("spinner_box");
+const weatherHeaderRef = document.getElementById("weatherHeader");
 
 const spinner = `<div class="lds-roller"><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div></div>`;
 
@@ -18,12 +20,14 @@ locationSearchRef.addEventListener("click", function searchBox(e) {
   if (typedLocation.length < 2) {
     weatherRootRef.innerHTML = `Please enter at least 2 characters`;
   } else {
+    weatherRootRef.innerHTML = "";
+    weatherHeaderRef.innerHTML = "";
     getWeatherData(typedLocation);
   }
 });
 
 async function getWeatherData(typedLocation) {
-  weatherRootRef.innerHTML = spinner;
+  spinnerRef.innerHTML = spinner;
 
   try {
     const searchLocation = await axios.get(
@@ -47,9 +51,9 @@ const handleCityList = (input) => {
 
     return `<li data-lat="${lat}" data-lon="${lon}">${name}, ${state} (${country})</li>`;
   });
+  spinnerRef.innerHTML = "";
   const cityString = object.join("");
   cityListContainer.innerHTML = cityString;
-  weatherRootRef.innerHTML = "";
   cityListContainer.addEventListener("click", function (event) {
     if (event.target.tagName.toLowerCase() === "li") {
       const lat = event.target.getAttribute("data-lat");
@@ -64,6 +68,7 @@ const handleCityList = (input) => {
 
 async function latAndLon(lat, lon) {
   console.log(lat, lon);
+  spinnerRef.innerHTML = spinner;
   try {
     const result = await axios.get(
       `https://api.openweathermap.org/data/2.5/forecast?lat=${lat}&lon=${lon}&appid=20b2728d9aba59c5f9efb3c40597cd8c`

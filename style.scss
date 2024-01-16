@@ -114,6 +114,7 @@ ul li:hover {
 #weatherHeader {
   margin: auto;
   width: 95%;
+  min-width: 500px;
   font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
   color: #ffffff;
   font-size: 2.8rem;
@@ -135,16 +136,13 @@ ul li:hover {
   text-align: left;
   font-weight: 300;
 
-  [class*="weather_cell"]:hover {
-    background-color: rgba(57, 66, 93, 0.445);
-  }
   .weather_cell1 {
     background-color: rgba(81, 92, 129, 0.445);
     border-top: 8px solid #aad6ae;
     grid-column: 1/5;
     grid-row: 1/1;
     display: grid;
-    grid-template-columns: 1fr 0.5fr 2fr; //3 columns
+    grid-template-columns: 0.5fr 0.5fr 2fr; //3 columns
     grid-template-rows: 50px 30px 30px 20px; //3 rows
     align-items: center;
     padding-left: 10px;
@@ -157,6 +155,14 @@ ul li:hover {
     .weather_inner_cell2 {
       grid-column: 1/2;
       grid-row: 2/4;
+      margin-bottom: 0px;
+      align-self: center;
+      display: grid;
+      align-content: center;
+      img {
+        width: 60px;
+        height: 60px;
+      }
     }
     .weather_inner_cell3 {
       grid-column: 2/3;
@@ -205,10 +211,14 @@ ul li:hover {
       grid-column: 2/3;
       grid-row: 2/3;
       font-weight: 500;
+      text-align: right;
+      padding-right: 15px;
     }
     .weather_inner_cell4 {
       grid-column: 2/3;
       grid-row: 3/4;
+      text-align: right;
+      padding-right: 15px;
     }
     .weather_inner_cell5 {
       display: none;
@@ -236,10 +246,14 @@ ul li:hover {
       grid-column: 2/3;
       grid-row: 2/3;
       font-weight: 500;
+      text-align: right;
+      padding-right: 15px;
     }
     .weather_inner_cell4 {
       grid-column: 2/3;
       grid-row: 3/4;
+      text-align: right;
+      padding-right: 15px;
     }
     .weather_inner_cell5 {
       display: none;
@@ -267,10 +281,14 @@ ul li:hover {
       grid-column: 2/3;
       grid-row: 2/3;
       font-weight: 500;
+      text-align: right;
+      padding-right: 15px;
     }
     .weather_inner_cell4 {
       grid-column: 2/3;
       grid-row: 3/4;
+      text-align: right;
+      padding-right: 15px;
     }
     .weather_inner_cell5 {
       display: none;
@@ -298,14 +316,87 @@ ul li:hover {
       grid-column: 2/3;
       grid-row: 2/3;
       font-weight: 500;
+      text-align: right;
+      padding-right: 15px;
     }
     .weather_inner_cell4 {
       grid-column: 2/3;
       grid-row: 3/4;
+      text-align: right;
+      padding-right: 15px;
     }
     .weather_inner_cell5 {
       display: none;
     }
+  }
+  [class*="weather_cell"]:hover {
+    background-color: rgba(57, 66, 93, 0.445);
+  }
+  [class*="below-20"] {
+    border-color: rgb(16, 103, 255);
+  }
+  [class*="below-15"] {
+    border-color: #5956fa;
+  }
+  [class*="below-10"] {
+    border-color: #5669fa;
+  }
+  [class*="below-05"] {
+    border-color: #5679fa;
+  }
+  [class*="below-03"] {
+    border-color: #56a0fa;
+  }
+  [class*="below-02"] {
+    border-color: #56d7fa;
+  }
+  [class*="below-01"] {
+    border-color: #89e2fb;
+  }
+  [class*="below0"] {
+    border-color: #89e2fb;
+  }
+  [class*="below01"] {
+    border-color: #a2e4f6;
+  }
+  [class*="below02"] {
+    border-color: #aad0d6;
+  }
+  [class*="below03"] {
+    border-color: #aad6cf;
+  }
+  [class*="below05"] {
+    border-color: #aad6c0;
+  }
+  [class*="below08"] {
+    border-color: #aad6ae;
+  }
+  [class*="below11"] {
+    border-color: #aed6aa;
+  }
+  [class*="below15"] {
+    border-color: #95e64a;
+  }
+  [class*="below18"] {
+    border-color: #d9ff43;
+  }
+  [class*="below21"] {
+    border-color: #ffe343;
+  }
+  [class*="below25"] {
+    border-color: #ffc343;
+  }
+  [class*="below30"] {
+    border-color: #ffaa43;
+  }
+  [class*="below35"] {
+    border-color: #ff9e43;
+  }
+  [class*="below40"] {
+    border-color: #ff7243;
+  }
+  [class*="above40"] {
+    border-color: #ff4343;
   }
 }
 
@@ -324,11 +415,10 @@ ul li:hover {
 }
 
 .lds-roller {
-  display: inline-block;
-  position: relative;
   width: 80px;
   height: 80px;
-  background-color: rgb(117, 209, 255);
+  background-color: transparent;
+  margin: auto;
 }
 
 .lds-roller div {
