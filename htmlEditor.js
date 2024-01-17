@@ -10,6 +10,18 @@ export function HTMLEditor(result) {
   console.log(list);
   weatherRootRef.style.display = "grid";
   weatherHeaderRef.innerHTML = `Today`;
+
+  // Better solution from Jon
+  const midday = list.filter((item) => {
+    return item.dt_txt.includes("12:00:00");
+  });
+  console.log("Midday", midday);
+
+  const threeAM = list.filter((item) => {
+    return item.dt_txt.includes("03:00:00");
+  });
+  console.log("3am", threeAM);
+
   for (let i = 0; i < list.length; i += 8) {
     //Playing with time for midnight
     const fiveDayDateTimeStamp = list[i].dt; // UTC Timestamp in seconds

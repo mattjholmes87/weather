@@ -8,6 +8,7 @@
     <script type="module" src="./searchLocation.js"></script>
     <script type="module" src="./currentLocation.js"></script>
     <script type="module" src="./htmlEditor.js"></script>
+    <script type="module" src="./map.js"></script>
     <title>Matts Weather Forecast</title>
   </head>
   <body>
@@ -54,12 +55,90 @@
       <div id="spinner_box"></div>
       <div class="weather_grid_case" id="weatherRoot"></div>
       <div class="spacer"></div>
-      <div></div>
-      <div class="map_box_mobile">
+      <div class="map_box_mobile" id="map_box_mobile">
+        <div id="weatherHeader">Today in the UK</div>
         <img class="map_mobile" src="./images/map.png" />
+        <div class="location_box_Lerwick">
+          <div class="city_Lerwick">Lerwick</div>
+          <div class="cityIcon_Lerwick" id="cityIcon_Lerwick"></div>
+        </div>
+        <div class="location_box_Inverness">
+          <div class="city_Inverness">Inverness</div>
+          <div class="cityIcon_Inverness" id="cityIcon_Inverness"></div>
+        </div>
+        <div class="location_box_Edinburgh">
+          <div class="city_Edinburgh">Edinburgh</div>
+          <div class="cityIcon_Edinburgh" id="cityIcon_Edinburgh"></div>
+        </div>
+        <div class="location_box_Belfast">
+          <div class="city_Belfast">Belfast</div>
+          <div class="cityIcon_Belfast" id="cityIcon_Belfast"></div>
+        </div>
+        <div class="location_box_Hull">
+          <div class="city_Hull">Hull</div>
+          <div class="cityIcon_Hull" id="cityIcon_Hull"></div>
+        </div>
+        <div class="location_box_Manchester">
+          <div class="city_Manchester">Manchester</div>
+          <div class="cityIcon_Manchester" id="cityIcon_Manchester"></div>
+        </div>
+        <div class="location_box_Cardiff">
+          <div class="city_Cardiff">Cardiff</div>
+          <div class="cityIcon_Cardiff" id="cityIcon_Cardiff"></div>
+        </div>
+        <div class="location_box_London">
+          <div class="city_London">London</div>
+          <div class="cityIcon_London" id="cityIcon_London"></div>
+        </div>
+        <div class="location_box_StHelier">
+          <div class="city_StHelier">St Helier</div>
+          <div class="cityIcon_StHelier" id="cityIcon_StHelier"></div>
+        </div>
       </div>
-      <div class="map_box"><img class="map" src="./images/map.png" /></div>
+      <div class="map_box" id="map_box">
+        <div id="weatherHeader">Today in the UK</div>
+        <img class="map" src="./images/map.png" />
+
+        <div class="location_box_Lerwick">
+          <div class="city_Lerwick">Lerwick</div>
+          <div class="cityIcon_Lerwick" id="cityIcon_Lerwick"></div>
+        </div>
+        <div class="location_box_Inverness">
+          <div class="city_Inverness">Inverness</div>
+          <div class="cityIcon_Inverness" id="cityIcon_Inverness"></div>
+        </div>
+        <div class="location_box_Edinburgh">
+          <div class="city_Edinburgh">Edinburgh</div>
+          <div class="cityIcon_Edinburgh" id="cityIcon_Edinburgh"></div>
+        </div>
+        <div class="location_box_Belfast">
+          <div class="city_Belfast">Belfast</div>
+          <div class="cityIcon_Belfast" id="cityIcon_Belfast"></div>
+        </div>
+        <div class="location_box_Hull">
+          <div class="city_Hull">Hull</div>
+          <div class="cityIcon_Hull" id="cityIcon_Hull"></div>
+        </div>
+        <div class="location_box_Manchester">
+          <div class="city_Manchester">Manchester</div>
+          <div class="cityIcon_Manchester" id="cityIcon_Manchester"></div>
+        </div>
+        <div class="location_box_Cardiff">
+          <div class="city_Cardiff">Cardiff</div>
+          <div class="cityIcon_Cardiff" id="cityIcon_Cardiff"></div>
+        </div>
+        <div class="location_box_London">
+          <div class="city_London">London</div>
+          <div class="cityIcon_London" id="cityIcon_London"></div>
+        </div>
+        <div class="location_box_StHelier">
+          <div class="city_StHelier">St Helier</div>
+          <div class="cityIcon_StHelier" id="cityIcon_StHelier"></div>
+        </div>
+      </div>
+      <div class="spacer"></div>
+      <div class="spacer"></div>
+      <div class="spacer"></div>
     </div>
   </body>
 </html>
-<!-- Here -->
