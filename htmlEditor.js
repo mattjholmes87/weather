@@ -3,6 +3,7 @@ const weatherHeaderRef = document.getElementById("weatherHeader");
 const spinnerRef = document.getElementById("spinner_box");
 
 export function HTMLEditor(result) {
+  weatherRootRef.innerHTML = "";
   spinnerRef.innerHTML = "";
   const { list } = result.data;
   const { name, country } = result.data.city;
@@ -10,14 +11,27 @@ export function HTMLEditor(result) {
   weatherRootRef.style.display = "grid";
   weatherHeaderRef.innerHTML = `Today`;
   for (let i = 0; i < list.length; i += 8) {
-    const fiveDayTemp = list[i].main.temp;
-    const fiveDayWeather = list[i].weather[0].main;
-    const fiveDayWeatherDescript = list[i].weather[0].description;
-    const fiveDayWeatherIcon = list[i].weather[0].icon;
-    console.log(fiveDayTemp);
-    console.log(fiveDayWeather);
-    console.log(fiveDayWeatherDescript);
-    console.log(fiveDayWeatherIcon);
+    //Playing with time for midnight
+    const fiveDayDateTimeStamp = list[i].dt; // UTC Timestamp in seconds
+    const fiveDayDateWords = new Date(fiveDayDateTimeStamp * 1000); //Date in words
+    const startingHour = fiveDayDateWords.getHours(); //Get hour
+    const startingDay = fiveDayDateWords.getDay(); //Get day
+    const startingDayWord = ["Sun", "Mon", "Tues", "Wed", "Thus", "Fri", "Sat"];
+    const timeToThreeAM =
+      startingHour < 3 ? 1 : startingHour == 3 ? 0 : (27 - startingHour) / 3; //position shift required to get to 3am on next day
+    const fiveDayTempNight = list[i + timeToThreeAM].main.temp;
+    const timeToMidday =
+      startingHour < 15 ? (12 - startingHour) / 3 : (36 - startingHour) / 3; //Playing with time for midday
+
+    const fiveDayTemp = list[i + timeToMidday].main.temp;
+    const fiveDayWeatherDescript =
+      list[i + timeToMidday].weather[0].description;
+    const fiveDayWeatherIcon = list[i + timeToMidday].weather[0].icon;
+
+    const fiveDayTempNow = list[0].main.temp;
+    const fiveDayWeatherDescriptNow = list[0].weather[0].description;
+    const fiveDayWeatherIconNow = list[0].weather[0].icon;
+
     let day = i / 8 + 1;
     const tempDescrip =
       Math.round(fiveDayTemp - 273.15) < -20
@@ -63,17 +77,25 @@ export function HTMLEditor(result) {
         : Math.round(fiveDayTemp - 273.15) < 40
         ? "below40"
         : "above40";
+
     document.getElementById("locationInput").value = name;
     weatherRootRef.innerHTML += ` <div class="weather_cell${day} ${tempDescrip}">
-    <div class="weather_inner_cell1">${name}, ${country} </div>
-    <div class="weather_inner_cell2" ><img src=https://openweathermap.org/img/wn/${fiveDayWeatherIcon}.png /></div>
-    <div class="weather_inner_cell3">${Math.round(
+    <div class="weather_inner_cell1a">${name}, ${country}</div> <div class="weather_inner_cell1b">${
+      startingDayWord[startingDay]
+    } </div>
+    <div class="weather_inner_cell2a" ><img src=https://openweathermap.org/img/wn/${fiveDayWeatherIconNow}.png /></div>
+    <div class="weather_inner_cell2b" ><img src=https://openweathermap.org/img/wn/${fiveDayWeatherIcon}.png /></div>
+    <div class="weather_inner_cell3a">${Math.round(
+      fiveDayTempNow - 273.15
+    )}&deg;C</div>
+    <div class="weather_inner_cell3b">${Math.round(
       fiveDayTemp - 273.15
     )}&deg;C</div>
     <div class="weather_inner_cell4">${Math.round(
-      fiveDayTemp - 273.15
+      fiveDayTempNight - 273.15
     )}&deg;C</div>
-    <div class="weather_inner_cell5">The weather is ${fiveDayWeatherDescript} </div>
+    <div class="weather_inner_cell5a">The weather is ${fiveDayWeatherDescriptNow} </div><div class="weather_inner_cell5b">The weather is ${fiveDayWeatherDescript} </div>
+    </div>
   </div>`;
   }
 }

@@ -8,6 +8,6 @@ const nextMonthString = nextMonth.toLocaleDateString();
 console.log("Next Month", nextMonthString);
 
 const todaysDate = new Date();
+console.log(todaysDate);
 const present = todaysDate.getTime();
 console.log(present);
-const past = new Date("01/01/2018");
