@@ -30,7 +30,6 @@
   text-align: center;
   font-size: 4rem;
   font-weight: 600;
-  background-color: #149edc;
   color: #ffffff;
   font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
   padding-left: 30px;
@@ -63,10 +62,28 @@
 
 #currentLocation {
   background-color: #1b3e50;
-  width: 44px;
+  min-width: 44px;
   height: 44px;
   padding: 8px;
   margin-left: 8px;
+}
+
+#closeSearch {
+  background-color: #ffffff;
+  color: #1b3e50;
+  font-size: 2.5rem;
+  font-weight: 400;
+  min-width: 44px;
+  height: 44px;
+  padding: 8px;
+  margin-left: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+#closeSearch:hover {
+  color: #149edc;
 }
 
 #mag_glass {
@@ -88,20 +105,27 @@
 
 ul {
   margin: 0px;
+  padding-left: 20px;
+  padding-right: 20px;
 }
 
 div ul li {
-  font-size: 2rem;
+  font-size: 1.6rem;
   padding-top: 5px;
+  padding-left: 20px;
   padding-bottom: 5px;
   text-align: center;
   font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
   list-style-type: none;
   border-bottom: 1px solid #ededed;
+  height: 40px;
+  display: flex;
+  align-items: center;
 }
 
 ul li:hover {
-  background-color: #ededed;
+  background-color: #000000;
+  color: #ffffff;
 }
 
 .main_section {
@@ -921,6 +945,11 @@ ul li:hover {
   }
 }
 @media screen and (min-width: 760px) {
+  ul {
+    margin: 0px;
+    padding-left: 240px;
+    padding-right: 20px;
+  }
   .map {
     display: block;
     width: 45%;

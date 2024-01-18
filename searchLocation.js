@@ -3,10 +3,12 @@ import { HTMLEditor } from "./htmlEditor.js";
 const locationSearchRef = document.getElementById("locationSearch");
 const weatherRootRef = document.getElementById("weatherRoot");
 const cityListContainer = document.querySelector("[data-suggestion]");
-const searchListRef = document.getElementById("searchList");
 const inputRef = document.getElementById("locationInput");
 const spinnerRef = document.getElementById("spinner_box");
 const weatherHeaderRef = document.getElementById("weatherHeader");
+const closeSearchBoxRef = document.getElementById("closeSearchBox");
+const weatherbarwrapRef = document.getElementById("weatherbarwrap");
+const weatherbarRef = document.getElementById("weatherbar");
 
 const spinner = `<div class="lds-roller"><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div></div>`;
 
@@ -17,10 +19,23 @@ inputRef.addEventListener("click", () => {
 locationSearchRef.addEventListener("click", function searchBox(e) {
   e.preventDefault();
   let typedLocation = document.getElementById("locationInput").value;
-  if (typedLocation.length < 2) {
+
+  weatherRootRef.style.display = "none";
+
+  if (typedLocation.length < 2 || typedLocation === "Enter a town or city") {
+    weatherRootRef.style.display = "flex";
+    weatherRootRef.style.justifyContent = "center";
+    weatherRootRef.style.fontSize = "2rem";
     weatherRootRef.innerHTML = `Please enter at least 2 characters`;
   } else {
+    closeSearchBoxRef.innerHTML = `<div id="closeSearch">X</div>`;
     weatherRootRef.innerHTML = "";
+    weatherRootRef.style.display = "";
+    weatherRootRef.style.justifyContent = "";
+    weatherRootRef.style.fontSize = "";
+    weatherbarwrapRef.style.backgroundColor = "#ffffff";
+    inputRef.style.backgroundColor = "#f6f6f6";
+    weatherbarRef.style.color = "#000000";
     weatherHeaderRef.innerHTML = "";
     getWeatherData(typedLocation);
   }
@@ -81,3 +96,11 @@ async function latAndLon(lat, lon) {
     weatherRootRef.innerHTML = `API Down, try again later`;
   }
 }
+
+closeSearchBoxRef.addEventListener("click", function closeSearch() {
+  closeSearchBoxRef.innerHTML = ``;
+  cityListContainer.style.display = "none";
+  weatherbarwrapRef.style.backgroundColor = "#149edc";
+  inputRef.style.backgroundColor = "#ffffff";
+  weatherbarRef.style.color = "#ffffff";
+});

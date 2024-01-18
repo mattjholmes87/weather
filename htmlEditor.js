@@ -1,8 +1,19 @@
 const weatherRootRef = document.getElementById("weatherRoot");
 const weatherHeaderRef = document.getElementById("weatherHeader");
 const spinnerRef = document.getElementById("spinner_box");
+const inputRef = document.getElementById("locationInput");
+const weatherbarwrapRef = document.getElementById("weatherbarwrap");
+const weatherbarRef = document.getElementById("weatherbar");
+const closeSearchBoxRef = document.getElementById("closeSearchBox");
 
 export function HTMLEditor(result) {
+  weatherRootRef.style.display = "";
+  weatherRootRef.style.fontSize = "";
+  weatherRootRef.style.justifyContent = "";
+  weatherbarwrapRef.style.backgroundColor = "#149edc";
+  inputRef.style.backgroundColor = "#ffffff";
+  weatherbarRef.style.color = "#ffffff";
+  closeSearchBoxRef.innerHTML = ``;
   weatherRootRef.innerHTML = "";
   spinnerRef.innerHTML = "";
   const { list } = result.data;
@@ -34,7 +45,6 @@ export function HTMLEditor(result) {
     const fiveDayTempNight = list[i + timeToThreeAM].main.temp;
     const timeToMidday =
       startingHour < 15 ? (12 - startingHour) / 3 : (36 - startingHour) / 3; //Playing with time for midday
-
     const fiveDayTemp = list[i + timeToMidday].main.temp;
     const fiveDayWeatherDescript =
       list[i + timeToMidday].weather[0].description;

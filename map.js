@@ -1,13 +1,13 @@
 const map_box_mobileRef = document.getElementById("map_box_mobile");
 const LerwickRef = document.getElementsByClassName("cityIcon_Lerwick");
-const InvernessRef = document.getElementById("cityIcon_Inverness");
-const EdinburghRef = document.getElementById("cityIcon_Edinburgh");
-const BelfastRef = document.getElementById("cityIcon_Belfast");
-const HullRef = document.getElementById("cityIcon_Hull");
-const ManchesterRef = document.getElementById("cityIcon_Manchester");
-const CardiffRef = document.getElementById("cityIcon_Cardiff");
-const LondonRef = document.getElementById("cityIcon_London");
-const StHelierRef = document.getElementById("cityIcon_StHelier");
+const InvernessRef = document.getElementsByClassName("cityIcon_Inverness");
+const EdinburghRef = document.getElementsByClassName("cityIcon_Edinburgh");
+const BelfastRef = document.getElementsByClassName("cityIcon_Belfast");
+const HullRef = document.getElementsByClassName("cityIcon_Hull");
+const ManchesterRef = document.getElementsByClassName("cityIcon_Manchester");
+const CardiffRef = document.getElementsByClassName("cityIcon_Cardiff");
+const LondonRef = document.getElementsByClassName("cityIcon_London");
+const StHelierRef = document.getElementsByClassName("cityIcon_StHelier");
 
 async function mapWeather() {
   try {
@@ -77,15 +77,35 @@ function mapEditor(
   const London = result8.data.list[0].weather[0].icon;
   const StHelier = result9.data.list[0].weather[0].icon;
 
-  LerwickRef.innerHTML += `<img src=https://openweathermap.org/img/wn/${Lerwick}.png />`;
-  InvernessRef.innerHTML += `<img src=https://openweathermap.org/img/wn/${Inverness}.png />`;
-  EdinburghRef.innerHTML += `<img src=https://openweathermap.org/img/wn/${Edinburgh}.png />`;
-  BelfastRef.innerHTML += `<img src=https://openweathermap.org/img/wn/${Belfast}.png />`;
-  HullRef.innerHTML += `<img src=https://openweathermap.org/img/wn/${Hull}.png />`;
-  ManchesterRef.innerHTML += `<img src=https://openweathermap.org/img/wn/${Manchester}.png />`;
-  CardiffRef.innerHTML += `<img src=https://openweathermap.org/img/wn/${Cardiff}.png />`;
-  LondonRef.innerHTML += `<img src=https://openweathermap.org/img/wn/${London}.png />`;
-  StHelierRef.innerHTML += `<img src=https://openweathermap.org/img/wn/${StHelier}.png />`;
+  for (let i = 0; i < LerwickRef.length; i++) {
+    LerwickRef[
+      i
+    ].innerHTML += `<img src=https://openweathermap.org/img/wn/${Lerwick}.png />`;
+    InvernessRef[
+      i
+    ].innerHTML += `<img src=https://openweathermap.org/img/wn/${Inverness}.png />`;
+    EdinburghRef[
+      i
+    ].innerHTML += `<img src=https://openweathermap.org/img/wn/${Edinburgh}.png />`;
+    BelfastRef[
+      i
+    ].innerHTML += `<img src=https://openweathermap.org/img/wn/${Belfast}.png />`;
+    HullRef[
+      i
+    ].innerHTML += `<img src=https://openweathermap.org/img/wn/${Hull}.png />`;
+    ManchesterRef[
+      i
+    ].innerHTML += `<img src=https://openweathermap.org/img/wn/${Manchester}.png />`;
+    CardiffRef[
+      i
+    ].innerHTML += `<img src=https://openweathermap.org/img/wn/${Cardiff}.png />`;
+    LondonRef[
+      i
+    ].innerHTML += `<img src=https://openweathermap.org/img/wn/${London}.png />`;
+    StHelierRef[
+      i
+    ].innerHTML += `<img src=https://openweathermap.org/img/wn/${StHelier}.png />`;
+  }
 }
 
 mapWeather();
