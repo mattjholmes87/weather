@@ -19,7 +19,6 @@ inputRef.addEventListener("click", () => {
 locationSearchRef.addEventListener("click", function searchBox(e) {
   e.preventDefault();
   let typedLocation = document.getElementById("locationInput").value;
-
   weatherRootRef.style.display = "none";
 
   if (typedLocation.length < 2 || typedLocation === "Enter a town or city") {
@@ -41,6 +40,45 @@ locationSearchRef.addEventListener("click", function searchBox(e) {
   }
 });
 
+inputRef.addEventListener(
+  "keydown",
+  (e) => {
+    if (e.defaultPrevented) {
+      return;
+    }
+    switch (e.key) {
+      case "Enter":
+        let typedLocation = document.getElementById("locationInput").value;
+        if (
+          typedLocation.length < 2 ||
+          typedLocation === "Enter a town or city"
+        ) {
+          weatherRootRef.style.display = "flex";
+          weatherRootRef.style.justifyContent = "center";
+          weatherRootRef.style.fontSize = "2rem";
+          weatherRootRef.innerHTML = `Please enter at least 2 characters`;
+        } else {
+          closeSearchBoxRef.innerHTML = `<div id="closeSearch">X</div>`;
+          weatherRootRef.innerHTML = "";
+          weatherRootRef.style.display = "";
+          weatherRootRef.style.justifyContent = "";
+          weatherRootRef.style.fontSize = "";
+          weatherbarwrapRef.style.backgroundColor = "#ffffff";
+          inputRef.style.backgroundColor = "#f6f6f6";
+          weatherbarRef.style.color = "#000000";
+          weatherHeaderRef.innerHTML = "";
+          getWeatherData(typedLocation);
+        }
+        break;
+
+      default:
+        return;
+    }
+    e.preventDefault();
+  },
+  true
+);
+
 async function getWeatherData(typedLocation) {
   spinnerRef.innerHTML = spinner;
 
@@ -48,12 +86,19 @@ async function getWeatherData(typedLocation) {
     const searchLocation = await axios.get(
       `http://api.openweathermap.org/geo/1.0/direct?q=${typedLocation}&limit=5&appid=20b2728d9aba59c5f9efb3c40597cd8c`
     );
-    console.log(searchLocation);
-
-    await handleCityList(searchLocation);
-
-    const { lat, lon } = searchLocation.data[0];
-    console.log(lat, lon);
+    if (searchLocation.data.length < 1) {
+      console.log("too short");
+      weatherRootRef.style.display = "flex";
+      weatherRootRef.style.justifyContent = "center";
+      weatherRootRef.style.fontSize = "2rem";
+      weatherRootRef.innerHTML = `We cannot find this location, please check your spelling`;
+      spinnerRef.innerHTML = "";
+      return;
+    } else {
+      await handleCityList(searchLocation);
+      const { lat, lon } = searchLocation.data[0];
+      console.log(lat, lon);
+    }
   } catch (err) {
     weatherRootRef.innerHTML = `API Down, try again later`;
   }
@@ -103,4 +148,8 @@ closeSearchBoxRef.addEventListener("click", function closeSearch() {
   weatherbarwrapRef.style.backgroundColor = "#149edc";
   inputRef.style.backgroundColor = "#ffffff";
   weatherbarRef.style.color = "#ffffff";
+  weatherRootRef.innerHTML = "";
+  weatherRootRef.style.display = "";
+  weatherRootRef.style.justifyContent = "";
+  weatherRootRef.style.fontSize = "";
 });

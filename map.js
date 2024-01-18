@@ -66,7 +66,6 @@ function mapEditor(
   result8,
   result9
 ) {
-  console.log(result1.data.list[0].weather[0].icon);
   const Lerwick = result1.data.list[0].weather[0].icon;
   const Inverness = result2.data.list[0].weather[0].icon;
   const Edinburgh = result3.data.list[0].weather[0].icon;
