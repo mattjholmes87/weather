@@ -5,6 +5,7 @@ const inputRef = document.getElementById("locationInput");
 const weatherbarwrapRef = document.getElementById("weatherbarwrap");
 const weatherbarRef = document.getElementById("weatherbar");
 const closeSearchBoxRef = document.getElementById("closeSearchBox");
+const boxOneARef = document.getElementById("weather_inner_cell1a");
 
 export function HTMLEditor(result) {
   weatherRootRef.style.display = "";
@@ -102,9 +103,8 @@ export function HTMLEditor(result) {
 
     document.getElementById("locationInput").value = name;
     weatherRootRef.innerHTML += ` <div class="weather_cell${day} ${tempDescrip}">
-    <div class="weather_inner_cell1a">${name}, ${country}</div> <div class="weather_inner_cell1b">${
-      startingDayWord[startingDay]
-    } </div>
+    <div class="weather_inner_cell1a" id="weather_inner_cell1a">${name}, ${country}</div> 
+    <div class="weather_inner_cell1b">${startingDayWord[startingDay]} </div>
     <div class="weather_inner_cell2a" ><img src=https://openweathermap.org/img/wn/${fiveDayWeatherIconNow}.png /></div>
     <div class="weather_inner_cell2b" ><img src=https://openweathermap.org/img/wn/${fiveDayWeatherIcon}.png /></div>
     <div class="weather_inner_cell3a">${Math.round(

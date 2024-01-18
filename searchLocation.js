@@ -13,7 +13,7 @@ const weatherbarRef = document.getElementById("weatherbar");
 const spinner = `<div class="lds-roller"><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div></div>`;
 
 inputRef.addEventListener("click", () => {
-  inputRef.setAttribute("value", "");
+  inputRef.value = "";
 });
 
 locationSearchRef.addEventListener("click", function searchBox(e) {
@@ -152,4 +152,5 @@ closeSearchBoxRef.addEventListener("click", function closeSearch() {
   weatherRootRef.style.display = "";
   weatherRootRef.style.justifyContent = "";
   weatherRootRef.style.fontSize = "";
+  inputRef.value = "Enter a town or city";
 });
