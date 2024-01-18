@@ -34,7 +34,7 @@ export function HTMLEditor(result) {
   });
   console.log("3am", threeAM);
 
-  let array = [0];
+  let tempHolder = [0];
 
   for (let i = 0; i < list.length; i += 8) {
     //Playing with time for midnight
@@ -50,8 +50,8 @@ export function HTMLEditor(result) {
       startingHour < 15 ? (12 - startingHour) / 3 : (36 - startingHour) / 3; //Playing with time for midday
 
     const fiveDayTemp = list[i + timeToMidday].main.temp;
-    array.push(fiveDayTemp);
-    console.log(array);
+    tempHolder.push(fiveDayTemp); // Needed 1 dummy value or temps did not sync up due to how I'd structred it initially so adding in fake temp (that isn't displayed)
+
     const fiveDayWeatherDescript =
       list[i + timeToMidday].weather[0].description;
     const fiveDayWeatherIcon = list[i + timeToMidday].weather[0].icon;
@@ -76,7 +76,7 @@ export function HTMLEditor(result) {
         : Math.round(fiveDayTemp - 273.15) < -1
         ? "below-01"
         : Math.round(fiveDayTemp - 273.15) < 0
-        ? "below0"
+        ? "below00"
         : Math.round(fiveDayTemp - 273.15) < 1
         ? "below01"
         : Math.round(fiveDayTemp - 273.15) < 2
@@ -114,9 +114,11 @@ export function HTMLEditor(result) {
     <div class="weather_inner_cell3a">${Math.round(
       fiveDayTempNow - 273.15
     )}&deg;C</div>
-    <div class="weather_inner_cell3b">${Math.round(
-      array[i / 8] - 273.15
-    )}&deg;C</div>
+    <div class="weather_inner_cell3b">${
+      startingHour < 15
+        ? Math.round(fiveDayTemp - 273.15)
+        : Math.round(tempHolder[i / 8] - 273.15)
+    }&deg;C</div>
     <div class="weather_inner_cell4">${Math.round(
       fiveDayTempNight - 273.15
     )}&deg;C</div>

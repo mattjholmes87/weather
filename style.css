@@ -137,7 +137,8 @@ ul li:hover {
 
 .spacer {
   height: 1px;
-  margin-bottom: 50px;
+  padding-bottom: 50px;
+  background-color: transparent;
 }
 
 #weatherHeader {
@@ -501,7 +502,7 @@ ul li:hover {
 #weatherRoot [class*=below-01] {
   border-color: #89e2fb;
 }
-#weatherRoot [class*=below0] {
+#weatherRoot [class*=below00] {
   border-color: #89e2fb;
 }
 #weatherRoot [class*=below01] {
