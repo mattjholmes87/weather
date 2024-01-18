@@ -545,6 +545,10 @@ ul li:hover {
 }
 .map_box_mobile {
   position: relative;
+  max-width: 450px;
+  margin: auto;
+  padding-left: 10px;
+  padding-right: 10px;
 }
 .map_mobile {
   display: block;
@@ -590,7 +594,7 @@ ul li:hover {
 .location_box_Inverness {
   height: 20px;
   position: absolute;
-  top: 35%;
+  top: 37%;
   left: 48%;
   display: flex;
   flex-direction: row;
@@ -620,8 +624,8 @@ ul li:hover {
 .location_box_Edinburgh {
   height: 20px;
   position: absolute;
-  top: 44%;
-  left: 56%;
+  top: 48%;
+  left: 54%;
   display: flex;
   flex-direction: row;
   justify-content: center;
@@ -650,8 +654,8 @@ ul li:hover {
 .location_box_Belfast {
   height: 20px;
   position: absolute;
-  top: 56%;
-  left: 39%;
+  top: 60%;
+  left: 37%;
   display: flex;
   flex-direction: row;
   justify-content: center;
@@ -680,7 +684,7 @@ ul li:hover {
 .location_box_Hull {
   height: 20px;
   position: absolute;
-  top: 67%;
+  top: 70%;
   left: 76%;
   display: flex;
   flex-direction: row;
@@ -710,7 +714,7 @@ ul li:hover {
 .location_box_Manchester {
   height: 20px;
   position: absolute;
-  top: 65%;
+  top: 70%;
   left: 46%;
   display: flex;
   flex-direction: row;
@@ -770,7 +774,7 @@ ul li:hover {
 .location_box_London {
   height: 20px;
   position: absolute;
-  top: 80%;
+  top: 82%;
   left: 72%;
   display: flex;
   flex-direction: row;
