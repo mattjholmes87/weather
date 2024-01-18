@@ -5,6 +5,7 @@ const currentLocationRef = document.getElementById("currentLocation");
 const weatherRootRef = document.getElementById("weatherRoot");
 const spinnerRef = document.getElementById("spinner_box");
 const weatherHeaderRef = document.getElementById("weatherHeader");
+const cityListContainer = document.querySelector("[data-suggestion]");
 
 const spinner = `<div class="lds-roller"><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div></div>`;
 
@@ -12,6 +13,7 @@ currentLocationRef.addEventListener("click", function locationBox(e) {
   e.preventDefault();
   weatherRootRef.innerHTML = "";
   weatherHeaderRef.innerHTML = "";
+  cityListContainer.style.display = "none";
   getWeatherDataCurrentLoc();
   clearFields();
 });
