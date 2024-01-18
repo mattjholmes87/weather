@@ -34,6 +34,8 @@ export function HTMLEditor(result) {
   });
   console.log("3am", threeAM);
 
+  let array = [0];
+
   for (let i = 0; i < list.length; i += 8) {
     //Playing with time for midnight
     const fiveDayDateTimeStamp = list[i].dt; // UTC Timestamp in seconds
@@ -46,11 +48,13 @@ export function HTMLEditor(result) {
     const fiveDayTempNight = list[i + timeToThreeAM].main.temp;
     const timeToMidday =
       startingHour < 15 ? (12 - startingHour) / 3 : (36 - startingHour) / 3; //Playing with time for midday
+
     const fiveDayTemp = list[i + timeToMidday].main.temp;
+    array.push(fiveDayTemp);
+    console.log(array);
     const fiveDayWeatherDescript =
       list[i + timeToMidday].weather[0].description;
     const fiveDayWeatherIcon = list[i + timeToMidday].weather[0].icon;
-
     const fiveDayTempNow = list[0].main.temp;
     const fiveDayWeatherDescriptNow = list[0].weather[0].description;
     const fiveDayWeatherIconNow = list[0].weather[0].icon;
@@ -111,7 +115,7 @@ export function HTMLEditor(result) {
       fiveDayTempNow - 273.15
     )}&deg;C</div>
     <div class="weather_inner_cell3b">${Math.round(
-      fiveDayTemp - 273.15
+      array[i / 8] - 273.15
     )}&deg;C</div>
     <div class="weather_inner_cell4">${Math.round(
       fiveDayTempNight - 273.15
