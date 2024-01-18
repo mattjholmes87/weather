@@ -17,24 +17,24 @@ export function HTMLEditor(result) {
   closeSearchBoxRef.innerHTML = ``;
   weatherRootRef.innerHTML = "";
   spinnerRef.innerHTML = "";
-  const { list } = result.data;
-  const { name, country } = result.data.city;
-  console.log(list);
   weatherRootRef.style.display = "grid";
   weatherHeaderRef.innerHTML = `Today`;
 
-  // Better solution from Jon
+  const { list } = result.data;
+  const { name, country } = result.data.city;
+  console.log(list);
+
+  // Better solution from Jon for identifying midday and 3am slots.
   const midday = list.filter((item) => {
     return item.dt_txt.includes("12:00:00");
   });
   console.log("Midday", midday);
-
   const threeAM = list.filter((item) => {
     return item.dt_txt.includes("03:00:00");
   });
   console.log("3am", threeAM);
 
-  let tempHolder = [0];
+  let tempHolder = [0]; //Used to allocate a fake temp on loop as today doesn't display midday temp it displays current temp.
 
   for (let i = 0; i < list.length; i += 8) {
     //Playing with time for midnight
