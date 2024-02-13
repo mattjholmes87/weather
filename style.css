@@ -846,6 +846,13 @@ ul li:hover {
   padding-left: 20px;
 }
 
+.chartBox {
+  background-color: rgba(81, 92, 129, 0.445);
+  color: #ffffff;
+  width: 50%;
+  margin: auto;
+}
+
 .lds-roller {
   width: 80px;
   height: 80px;

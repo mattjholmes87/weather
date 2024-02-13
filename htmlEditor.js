@@ -59,49 +59,137 @@ export function HTMLEditor(result) {
     const fiveDayWeatherDescriptNow = list[0].weather[0].description;
     const fiveDayWeatherIconNow = list[0].weather[0].icon;
 
+    console.log(startingHour);
+    console.log(fiveDayTemp);
+    console.log(tempHolder);
+
     let day = i / 8 + 1;
     const tempDescrip =
-      Math.round(fiveDayTemp - 273.15) < -20
+      Math.round(
+        startingHour < 15
+          ? Math.round(fiveDayTemp - 273.15)
+          : Math.round(tempHolder[i / 8] - 273.15)
+      ) < -20
         ? "below-20"
-        : Math.round(fiveDayTemp - 273.15) < -15
+        : Math.round(
+            startingHour < 15
+              ? Math.round(fiveDayTemp - 273.15)
+              : Math.round(tempHolder[i / 8] - 273.15)
+          ) < -15
         ? "below-15"
-        : Math.round(fiveDayTemp - 273.15) < -10
+        : Math.round(
+            startingHour < 15
+              ? Math.round(fiveDayTemp - 273.15)
+              : Math.round(tempHolder[i / 8] - 273.15)
+          ) < -10
         ? "below-10"
-        : Math.round(fiveDayTemp - 273.15) < -5
+        : Math.round(
+            startingHour < 15
+              ? Math.round(fiveDayTemp - 273.15)
+              : Math.round(tempHolder[i / 8] - 273.15)
+          ) < -5
         ? "below-05"
-        : Math.round(fiveDayTemp - 273.15) < -3
+        : Math.round(
+            startingHour < 15
+              ? Math.round(fiveDayTemp - 273.15)
+              : Math.round(tempHolder[i / 8] - 273.15)
+          ) < -3
         ? "below-03"
-        : Math.round(fiveDayTemp - 273.15) < -2
+        : Math.round(
+            startingHour < 15
+              ? Math.round(fiveDayTemp - 273.15)
+              : Math.round(tempHolder[i / 8] - 273.15)
+          ) < -2
         ? "below-02"
-        : Math.round(fiveDayTemp - 273.15) < -1
+        : Math.round(
+            startingHour < 15
+              ? Math.round(fiveDayTemp - 273.15)
+              : Math.round(tempHolder[i / 8] - 273.15)
+          ) < -1
         ? "below-01"
-        : Math.round(fiveDayTemp - 273.15) < 0
+        : Math.round(
+            startingHour < 15
+              ? Math.round(fiveDayTemp - 273.15)
+              : Math.round(tempHolder[i / 8] - 273.15)
+          ) < 0
         ? "below00"
-        : Math.round(fiveDayTemp - 273.15) < 1
+        : Math.round(
+            startingHour < 15
+              ? Math.round(fiveDayTemp - 273.15)
+              : Math.round(tempHolder[i / 8] - 273.15)
+          ) < 1
         ? "below01"
-        : Math.round(fiveDayTemp - 273.15) < 2
+        : Math.round(
+            startingHour < 15
+              ? Math.round(fiveDayTemp - 273.15)
+              : Math.round(tempHolder[i / 8] - 273.15)
+          ) < 2
         ? "below02"
-        : Math.round(fiveDayTemp - 273.15) < 3
+        : Math.round(
+            startingHour < 15
+              ? Math.round(fiveDayTemp - 273.15)
+              : Math.round(tempHolder[i / 8] - 273.15)
+          ) < 3
         ? "below03"
-        : Math.round(fiveDayTemp - 273.15) < 5
+        : Math.round(
+            startingHour < 15
+              ? Math.round(fiveDayTemp - 273.15)
+              : Math.round(tempHolder[i / 8] - 273.15)
+          ) < 5
         ? "below05"
-        : Math.round(fiveDayTemp - 273.15) < 8
+        : Math.round(
+            startingHour < 15
+              ? Math.round(fiveDayTemp - 273.15)
+              : Math.round(tempHolder[i / 8] - 273.15)
+          ) < 8
         ? "below08"
-        : Math.round(fiveDayTemp - 273.15) < 11
+        : Math.round(
+            startingHour < 15
+              ? Math.round(fiveDayTemp - 273.15)
+              : Math.round(tempHolder[i / 8] - 273.15)
+          ) < 11
         ? "below11"
-        : Math.round(fiveDayTemp - 273.15) < 15
+        : Math.round(
+            startingHour < 15
+              ? Math.round(fiveDayTemp - 273.15)
+              : Math.round(tempHolder[i / 8] - 273.15)
+          ) < 15
         ? "below15"
-        : Math.round(fiveDayTemp - 273.15) < 18
+        : Math.round(
+            startingHour < 15
+              ? Math.round(fiveDayTemp - 273.15)
+              : Math.round(tempHolder[i / 8] - 273.15)
+          ) < 18
         ? "below18"
-        : Math.round(fiveDayTemp - 273.15) < 21
+        : Math.round(
+            startingHour < 15
+              ? Math.round(fiveDayTemp - 273.15)
+              : Math.round(tempHolder[i / 8] - 273.15)
+          ) < 21
         ? "below21"
-        : Math.round(fiveDayTemp - 273.15) < 25
+        : Math.round(
+            startingHour < 15
+              ? Math.round(fiveDayTemp - 273.15)
+              : Math.round(tempHolder[i / 8] - 273.15)
+          ) < 25
         ? "below25"
-        : Math.round(fiveDayTemp - 273.15) < 30
+        : Math.round(
+            startingHour < 15
+              ? Math.round(fiveDayTemp - 273.15)
+              : Math.round(tempHolder[i / 8] - 273.15)
+          ) < 30
         ? "below30"
-        : Math.round(fiveDayTemp - 273.15) < 35
+        : Math.round(
+            startingHour < 15
+              ? Math.round(fiveDayTemp - 273.15)
+              : Math.round(tempHolder[i / 8] - 273.15)
+          ) < 35
         ? "below35"
-        : Math.round(fiveDayTemp - 273.15) < 40
+        : Math.round(
+            startingHour < 15
+              ? Math.round(fiveDayTemp - 273.15)
+              : Math.round(tempHolder[i / 8] - 273.15)
+          ) < 40
         ? "below40"
         : "above40";
 
